@@ -1,0 +1,85 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined");
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+:root {
+  --primary: #074aaa;
+  --secondary: #ff9f43;
+  --secondary-light: #ff9e4365;
+  --primary-light: #7267f050;
+  --background: #f3f3f3;
+  --nav_head: #696969;
+  --dark-0: rgba(0, 0, 0, 0.835);
+  --dark-1: rgba(0, 0, 0, 0.685);
+}
+
+[data-theme="dark"] {
+  --background: #171d31;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 52.5%; /*1rem = 10px*/
+}
+
+@media only screen and (max-width: 576px) {
+  html {
+    font-size: 58.5%;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  html {
+    font-size: 40.5%;
+  }
+}
+
+ul li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat";
+  background-color: var(--background);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.mat-drawer-inner-container {
+  overflow-y: scroll; /* Add the ability to scroll */
+  scrollbar-width: none; /* Firefox 64 */
+  z-index: 99999999;
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.divider {
+  width: 100% !important;
+  height: 0.15rem;
+  margin: 1rem 0;
+  background-color: rgb(226, 226, 226);
+}

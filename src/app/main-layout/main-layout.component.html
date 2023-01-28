@@ -1,0 +1,485 @@
+<div class="main_layout_wrp">
+  <section class="dashboard-analytics">
+    <!--First Row-->
+    <div class="row">
+      <div class="cm12 cl6">
+        <div class="card cg-card">
+          <div class="card-body">
+            <div id="apex-mix-chart">
+              <apx-chart
+                [series]="mixChartOptions.series"
+                [chart]="mixChartOptions.chart"
+                [yaxis]="mixChartOptions.yaxis"
+                [xaxis]="mixChartOptions.xaxis"
+                [labels]="mixChartOptions.labels"
+                [stroke]="mixChartOptions.stroke"
+                [title]="mixChartOptions.title"
+                [dataLabels]="mixChartOptions.dataLabels"
+                [fill]="mixChartOptions.fill"
+                [tooltip]="mixChartOptions.tooltip"
+              ></apx-chart>
+            </div>
+            <!-- <img
+              src="data:image/png;base64,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"
+              class="cg-img-left"
+            />
+            <img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMUAAABTCAMAAAAY2TOcAAABAlBMVEUAAADtj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj50b0aftj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj53tj50b0acb0acb0aftj53tj53tj53tj53/vAEb0af/vAEb0aftj50b0acb0acb0af/vAEb0af/vAEb0af/vAEb0acb0af/vAH/vAH/vAH/vAH/vAH/vAEb0af/vAEb0af4qz7/vAHtj50b0af/vAFW6jjPAAAAU3RSTlMAAvcI/RXta/IF3tfCWUnStU8sIOF86L2ml4LNuHE3EAySU5wpKCQbsY5hRfnIq6Iy5NaxnYiFdz708uBkQQtbTph5IBT56MXw4puXSEY9IpIxHhHzkVEAAAVwSURBVHja7dtpV9pAGAXgmz00gOyL7CKyKWC12s1q7b4vL/3/f6U0CBPizICVWNLj88GPntzhvZkJJ4DsSgShR0SlKsKOJvRiDeGm0x+5GELNpqn8HkLMpitqVkNo2TTn9BFWNnkUDISTTV6mpSCMbFp0MEIIZchHb9QROhm65nAHYZMhjkQa4ZIhHvV0Q4+Ir14+e/Ps0095CsZ5jA30+cmvP558WZKCGRoIELlwM98mIVzvX2GBQ0JmT8HMZqT4+GvmJTzi2CIxPYuZzUjxYZ7iGWaUZIkkKTLZ8s78w9iMFL/m3swyxCYBhCnUQl/BAT2wNExtRAr/ZxHpOUTCFCWrhokhEZnb05JvRIrFXmhWhkiUwmyMMJWdfizFFrAZKbz3qHolR1dyKPkKnY+xGYrRlN5ZunlcHr+4gxRsv6hlTZpLILpQ6O00PEY0dyAv+sV4/HA36BRs7/5xYpPHtieFOoj7rrROzKTodYjsPh2Px0/PcTfaXZsWJOcptio1XHO4WJgTQdFfPxy72FQFKF1Uyac9TWEXR+CJ0iK1mQLH0djFpio4reE++eXcC42yQvs06ZrEGWegHs5ivEOgUgWdrksAhe09CJ0SRykWgc+L47Hr7WsEqNohrm3I7RBXpnKt6Oduv4McqMdlEtiBXIoEzEdtzlRdIDDxKAmlIafpJLI/TPmn6hIB0OKNApIlEjNXeJ6VKPcRsFalrBJZOHsguwwskyepUgyBqe00p2uo1gCtq5PICZYpkpTZHCEISvU0Or/swvQGtSUrt1yFJB7sFCd/ulUFa2XECjnyOIMrklXF5ZaLk5BZiVwdeg8bZ+sKEnl8UtJ9a6XMW3IgLLdciwT0ogHAYKMVj+C20r2BTddkMadYtqDcchFBqcopuDzDag6TGv6a1u86xKO3F4ImyO8RluPe4pw4rnTJyx7E6n93Q02oJJDAopjJLbdcmTOIFhueJPmonV4NN1FPFv0rJb9Io8Art1yDfPa7NTB1nbOrly0DK3tEUjlO3ZKHnHJLWbRo4DsBHxCPHrXakDFS8d5poxB1CrB0Ylab+lqR5vJgVrzVls7gc0IiB6dpf4PT1aS13eyUDvfnA7gHJG0SawkOuA6LuYI0MTnO97Z9kjhxFy7Vj1W6hbxjih4NqjkSiUJAe6SvXm4obNlO6rz/ppKIainAUJXu/tp0qRwS6EFoND3n7mEVDk0V0jc8L26l3ALkSCI5G/Q8cdl1iEVOVSJTwSo60yGvQiBLfA3taoIl5U2wKxoSTxNSe9Hl5Wb7WiYmTlwlnlxc9uzOqj2nbBNHFXKKlcVKLLKlL4hEbN4iG5hTOiSwDa/e/vWhxLqcNduQSvBrzdQeyKrN9G3yqeDOVDi1XjRSZdVmUoe+Q4CBOzPi1NrHklabaW+R1wB3RzF9teYoSKvN1MvkEccdGizWmqfuSKvNRJo0l1Fwh6yFWvOlbHm1mawnZ3CeH73Aopan1kKxJdVmYiq59DQC85zz9f4huboaJIpLqs08Nv3P0+sPMfH0AguGrNZiWmlJtZmWu8HEEJjLsesSXj0i6hhYIm3SqiNvHBCZGoJz8XQ88RxebVZrmeSyajNahxoI0u7DWQhmkLrZI3YSyyiNFAL14ug5/k4kOqt2qLVzbrVD/S74RF93qx122Um1Q/w6+xWlTEmEn1HEvXv37v2P+vmw/lLHw9LJ2cgYu8dHWFGkSBNOG5vm659X3M6xEiNPrjzWp5qP47bO393kvbAEuaLrG6nWYB1HuuPx1DFWYTg00YxgXRo6TWRxS6/fTl80vFhxpLZIr6z1cD2hF28/UpMMR1+xKoNN8TpoDlEnhds7+r6Lfyce3bhftf8GxgHAIi+xyUgAAAAASUVORK5CYII="
+              class="cg-img-right"
+            /> -->
+            <!-- <div style="display: flex; width: 100%; justify-content: center; align-items: center;">
+              <span class="banner_one_award"
+              style="width: 6rem !important; height: 6rem !important;"
+              ><span class="avatar-container">
+                 <img style="width: 100%; border-radius: 50px" src="https://play-lh.googleusercontent.com/A8jF58KO1y2uHPBUaaHbs9zSvPHoS1FrMdrg8jooV9ftDidkOhnKNWacfPhjKae1IA" />
+              </span>
+            </span>
+            <span class="banner_one_award"
+            ><span class="avatar-container">
+               <img style="width: 100%; border-radius: 50px" src="data:image/png;base64,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" />
+            </span>
+          </span>
+          <span class="banner_one_award" style="width: 6rem !important; height: 6rem !important;"
+          ><span class="avatar-container">
+            <img style="width: 100%; border-radius: 50px" src="data:image/jpeg;base64,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" />
+          </span>
+        </span>
+            </div>
+            -->
+            <!-- <div class="banner_body_text">
+              <h2>Welcome merchant</h2>
+              <p>
+                You have done 57.6% more sales today. Check your new badge in
+                your profile.
+              </p>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="cs6 cl3">
+        <div class="card gr-card">
+          <div class="card-body">
+            <span class="line-char-avatar">
+              <span class="avatar-container">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="21px"
+                  height="21px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-users"
+                >
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </span>
+            </span>
+            <div class="truncate">
+              <h2>92.6k</h2>
+              <span>Subscribers Gained</span>
+            </div>
+          </div>
+          <div style="height: 10rem; min-height: 16rem">
+            <canvas
+              #lineChartOne
+              style="width: 294px; height: 100px"
+              baseChart
+              [data]="lineSalesDataOne"
+              [type]="'line'"
+              [options]="lineChartOptions"
+            ></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="cs6 cl3">
+        <div class="card gr-card">
+          <div class="card-body">
+            <span class="line-char-avatar yellow-bg">
+              <span class="avatar-container">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="21px"
+                  height="21px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-package"
+                >
+                  <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
+                  <path
+                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                  ></path>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                  <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+              </span>
+            </span>
+            <div class="truncate">
+              <h2 class="mb-25 font-weight-bolder">34.4k</h2>
+              <span>Order Received</span>
+            </div>
+          </div>
+          <div style="height: 10rem; min-height: 16rem">
+            <canvas
+              #lineChartTwo
+              baseChart
+              [data]="lineSalesDataTwo"
+              [type]="'line'"
+              [options]="lineChartOptions"
+            ></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Second Row-->
+    <div class="row">
+      <div class="cl6 cm12">
+        <div class="card" style="background-color: #fff">
+          <div class="card-body">
+            <div class="row f-reverse">
+              <div class="cs6 bar-graph-col">
+                <div class="bargraph_container_text">
+                  <h2>2.7K</h2>
+                  <p>Avg Sessions</p>
+
+                  <h5>
+                    <span class="secondary_part">+5.2% </span>
+                    <span>vs Last 7 days</span>
+                  </h5>
+                </div>
+
+                <button
+                  mat-flat-button
+                  style="
+                    margin-bottom: 0.6rem;
+                    background-color: #074aaa;
+                    color: #fff;
+                  "
+                >
+                  View Details
+                </button>
+              </div>
+              <div class="cs6 bar-graph-col">
+                <div style="text-align: right; font-size: 1.4rem">
+                  Last 7 Days
+                </div>
+                <div style="height: 20rem; min-height: 20rem">
+                  <canvas
+                    baseChart
+                    style="width: 294px; height: 100px"
+                    [data]="barSalesData"
+                    [type]="'bar'"
+                    [options]="barChartOptions"
+                  ></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="division"></div>
+            <mat-grid-list cols="2" rowHeight="6rem" [gutterSize]="'2rem'">
+              <mat-grid-tile>
+                <div style="width: 100%">
+                  <p class="progress-bar-text">Goal: $100000</p>
+                  <mat-progress-bar
+                   
+                    color="red"
+                    style="height: 0.6rem; border-radius: 2rem"
+                    mode="determinate"
+                    value="40"
+                  ></mat-progress-bar>
+                </div>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                <div style="width: 100%">
+                  <p class="progress-bar-text">Users: 100.0k</p>
+                  <mat-progress-bar
+                    class="progress-two"
+                    style="height: 0.6rem; border-radius: 2rem;"
+                    mode="determinate"
+                    value="50"
+                  ></mat-progress-bar>
+                </div>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                <div style="width: 100%">
+                  <p class="progress-bar-text">Retention: 90%</p>
+                  <mat-progress-bar
+                    class="progress-three"
+                    style="height: 0.6rem; border-radius: 2rem"
+                    mode="determinate"
+                    value="70"
+                  ></mat-progress-bar>
+                </div>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                <div style="width: 100%">
+                  <p class="progress-bar-text">Duration: 1yr</p>
+                  <mat-progress-bar
+                    class="progress-four"
+                    style="height: 0.6rem; border-radius: 2rem"
+                    mode="determinate"
+                    value="40"
+                  ></mat-progress-bar>
+                </div>
+              </mat-grid-tile>
+            </mat-grid-list>
+          </div>
+        </div>
+      </div>
+
+      <div class="cl6 cm12">
+        <div class="card" style="background-color: #fff">
+          <div
+            class="card-header"
+            style="
+              display: flex;
+              justify-content: space-between;
+              padding-bottom: 0 !important;
+            "
+          >
+            <h4 class="card-title">Support Tracker</h4>
+            <p class="card-title">Last 7 Days</p>
+          </div>
+          <div class="card-body" style="padding: 2rem">
+            <div class="row" style="margin: 0 !important">
+              <h1 style="font-size: '4rem'">
+                163
+                <!-- <span
+                  style="
+                    display: 'block';
+                    text-align: 'center';
+                    margin-top: '-1.2rem';
+                    font-size: '1.3rem';
+                  "
+                >
+                  Tickets
+                </span> -->
+              </h1>
+              <div id="apex-radial-chart">
+                <apx-chart
+                  [series]="chartOptionsOne.series"
+                  [chart]="chartOptionsOne.chart"
+                  [plotOptions]="chartOptionsOne.plotOptions"
+                  [labels]="chartOptionsOne.labels"
+                  [fill]="chartOptionsOne.fill"
+                  [stroke]="chartOptionsOne.stroke"
+                ></apx-chart>
+              </div>
+              <!-- <div
+                class="doughnut-chart"
+                style="flex: '1'; height: 23rem; min-height: 23rem"
+              >
+                <canvas
+                  baseChart
+                  [data]="doughnutSalesData"
+                  [type]="'doughnut'"
+                  [options]="doughnutChartOptions"
+                ></canvas>
+              </div> -->
+            </div>
+            <div class="tracket_data_tbl">
+              <div style="text-align: 'center'">
+                <p style="font-size: '1.5rem'">New Tickets</p>
+                <h3 style="font-size: '3rem'">29</h3>
+              </div>
+              <div style="text-align: 'center'">
+                <p style="font-size: '1.5rem'">Open Tickets</p>
+                <h3 style="font-size: '3rem'">63</h3>
+              </div>
+              <div style="text-align: 'center'">
+                <p style="font-size: '1.5rem'">Response Time</p>
+                <h3 style="font-size: '3rem'">1d</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Third Row-->
+    <div class="row">
+      <div class="cl4">
+        <div class="card gr-card">
+          <div class="card-header">
+            <h4 class="card-title ml-25">User Timeline</h4>
+          </div>
+          <div class="card-body">
+            <ul style="padding-left: 0 !important">
+              <li style="margin-bottom: 2.8rem">
+                <div class="timeline-li">
+                  <h6>12 Invoices have been paid</h6>
+                  <div>12 min ago</div>
+                </div>
+                <p style="font-size: 1.2rem">
+                  Invoices have been paid to the company.
+                </p>
+                <div class="media">
+                  <div class="media-aside">
+                    <img
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAkCAMAAAAw96PuAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIaADAAQAAAABAAAAJAAAAADeoA9wAAABcVBMVEUAAAD/qlX/qlX/n2D/qlX/n1D/pUv/qkf/oUP/pk3/qkn/okb/o0f/okT/n0j/oEn/n0b/pEn/oEf/okb/oUj/o0f/n0X/oUT/o0f/oEb/pEP/okb/n0T/okT/oEb/n0T/oEX/o0b/n0P/oUP/okb/oUT/n0b/oUX/oET/oUb/n0X/oET/oUP/oEX/okT/oEP/oUX/oUP/oET/oUX/oEX/n0T/oEX/oET/oEX/n0T/oET/n0P/oEX/n0P/oUT/n0T/oEX/oUT/oET/oEP/oET/oUT/oEP/oEP/oET/oEP/oEP/oET/n0T/oET/oEP/n0T/oET/n0T/n0T/oET/n0T/n0P/oET/n0P/oET/n0T/oEP/oET/oET/n0T/n0T/oEP/oEP/n0P/oET/n0P/n0T/n0T/n0P/oEP/n0T/oEP/n0P/oET/n0T/oEP/oET/n0T/oET/oEP/n0T/oEP/oET/n0P/oEP/oET/n0T/oEP/n0NWaDR5AAAAenRSTlMAAwYICRAREhMUFRYZHiAjKCorLC4vMDEyMzU3ODw+QENFSExNT1BRU1RVVldZWltcX2Zna21zdHZ4e31+hYeIkZKTlJmam5yen6OkpaanqKmtsLG4ury9v8DBw8fIytHU1dfY2t3g5OXn6Onq6+zt7u/w8/n6+/z9/jLTlDYAAAE3SURBVDjL7dRHUwIxFMDxZ0OsIAoqtijqYhcVCxZQZO0iWLAXYC0IsqIivE/vRh2GLLs5evJ/yLyZ/CaHzCQAAAbxAZmezMBUfoPqEk2McGFpz5Zi4VPtyjllSTYXiYBKRCYpSbVwBIx/UmLlCBij5MXGETCaVYZ0G0fAMCVyO0eA80MZX+0cAQIlmVaOgAFK5rREbOq3sJ5g+hcaQvweTyOYCPjjiMf+c2XZyeP+PSsER6rW2ruNQzWDlW4ksIlVB2pxBnuIR3CCqxAjlvo3Y4nITgCRlsve8RZCxGP2NgRZ0S8gXpuc6xDFEFyRhWBdI3NGdM2wKC1tmEbSxr5dmz1H5vMdwIhw13TmTuh2JzHu6pmV0bOFl46Lv71TH0/M6P0OhTp1fphChz8Po1p81N6XVioAvgBZgp3AxW+3KgAAAABJRU5ErkJggg=="
+                      alt="data.json"
+                      height="23"
+                      class=""
+                    />
+                  </div>
+                  <div class="media-body my-auto">
+                    <h6 class="media-body mb-0">data.json</h6>
+                  </div>
+                </div>
+              </li>
+              <li style="margin-bottom: 2.8rem">
+                <div class="timeline-li">
+                  <h6>Client Meeting</h6>
+                  <div>12 min ago</div>
+                </div>
+                <p style="font-size: 1.2rem">
+                  Project meeting with john @10:15am
+                </p>
+                <div class="media">
+                  <div class="media-aside">
+                    <span class="b-avatar">
+                      <img
+                        src="https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584__340.png"
+                        alt="avatar"
+                      />
+                    </span>
+                  </div>
+                  <div class="media-body my-auto">
+                    <h6 class="media-body mb-0">John Doe (Client)</h6>
+                  </div>
+                </div>
+              </li>
+              <li style="margin-bottom: 2.8rem">
+                <div class="timeline-li">
+                  <h6>Create a new project for client</h6>
+                  <div>12 min ago</div>
+                </div>
+                <p style="font-size: 1.2rem">Add files to new design folder</p>
+                <div class="media">
+                  <div class="media-aside">
+                    <span class="b-avatar">
+                      <img
+                        src="https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584__340.png"
+                        alt="avatar"
+                      />
+                    </span>
+                  </div>
+                  <div class="media-body my-auto">
+                    <h6 class="media-body mb-0">John Doe (Client)</h6>
+                  </div>
+                </div>
+              </li>
+              <li style="margin-bottom: 2.8rem">
+                <div class="timeline-li">
+                  <h6>Create a new project for client</h6>
+                  <div>5 day ago</div>
+                </div>
+                <p style="font-size: 1.2rem">Add files to new design folder</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="cl4">
+        <div class="card gr-card">
+          <div class="card-header">
+            <h4 class="card-title ml-25">Sales</h4>
+          </div>
+          <div class="card-body">
+            <div id="chart">
+              <apx-chart
+                [series]="chartOptionsTwo.series"
+                [chart]="chartOptionsTwo.chart"
+                [xaxis]="chartOptionsTwo.xaxis"
+                [stroke]="chartOptionsTwo.stroke"
+                [markers]="chartOptionsTwo.markers"
+                [fill]="chartOptionsTwo.fill"
+                [plotOptions]="chartOptionsTwo.plotOptions"
+                [title]="chartOptionsTwo.title"
+              ></apx-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cl4">
+        <div class="card gr-card">
+          <div class="card-header">
+            <h4 class="card-title ml-25">App Design</h4>
+          </div>
+          <div class="card-body">
+            <div>
+              <img
+                style="height: 25rem; width: 100%"
+                src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/3489b985426981.5d7b4871b7b9d.gif"
+                alt="green iguana"
+              />
+              <p style="font-size: 1.2rem">
+                You can Find Only Post and Quotes Related to IOS like ipad app
+                design, iphone app design
+              </p>
+              <div class="app-team" style="margin-top: 1rem">
+                <h2>Members</h2>
+              </div>
+
+              <div class="media">
+                <div class="media-aside">
+                  <span class="b-avatar">
+                    <img
+                      src="https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584__340.png"
+                      alt="avatar"
+                    />
+                  </span>
+                </div>
+                <div class="media-aside">
+                  <span class="b-avatar">
+                    <img
+                      src="https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584__340.png"
+                      alt="avatar"
+                    />
+                  </span>
+                </div>
+                <div class="media-aside">
+                  <span class="b-avatar">
+                    <img
+                      src="https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584__340.png"
+                      alt="avatar"
+                    />
+                  </span>
+                </div>
+              </div>
+
+              <button
+                mat-flat-button
+                style="
+                  margin: 1.5rem 0;
+                  background-color: #074aaa;
+                  color: #fff;
+                  width: 100%;
+                "
+              >
+                Join Team
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Fourth Row-->
+    <div class="row">
+      <div class="c12 mb-1">
+        <div class="card gr-card">
+          <div class="table-nav m-2">
+            <app-client-table></app-client-table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

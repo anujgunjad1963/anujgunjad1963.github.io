@@ -1,0 +1,102 @@
+.navbar_cont {
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  background: #fff;
+  padding: 0.8rem 1rem;
+  border-radius: 0.628rem;
+  transition: all 0.4s;
+  box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+  z-index: 9999;
+}
+
+.header_wrp {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left_icons {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar_icon {
+  display: none;
+}
+
+.right_icons {
+  display: flex;
+  align-items: center;
+}
+
+.profile_txt {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 1rem;
+}
+
+.profile_section {
+  display: flex;
+  align-items: center;
+}
+
+.profile_pic {
+  width: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.profile_pic img {
+  border-radius: 50px;
+  width: 100%;
+}
+
+.profile_name {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.profile_desc {
+  font-size: 13px;
+}
+
+.mat-icon-button {
+  color: var(--nav_head);
+}
+
+@media only screen and (max-width: 1200px) {
+  .sidebar_icon {
+    display: block;
+  }
+  .other_left_icons {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .header_wrp {
+    justify-content: space-between;
+  }
+  .profile_txt {
+    display: none;
+  }
+  .dark_mode {
+    display: none;
+  }
+  .moon-btn {
+    display: none !important;
+  }
+}
+
+.bell-badge {
+  span {
+    right: -1px !important;
+    top: -16px !important;
+    font-weight: 500 !important;
+    width: 2rem !important;
+    height: 2rem !important;
+    line-height: 2rem !important;
+    font-size: 1.3rem !important;
+  }
+}
